@@ -87,3 +87,54 @@ Solution
 	           return 1;
         }
     }
+
+Exercise
+--------
+ 
+Define a new function called `rev(char *str, int length)` that will find the reverse of the passed string by recursive swapping.
+ 
+Tutorial Code
+-------------
+
+    #include <stdio.h>
+
+    int main() {
+        /* testing code */
+        char s[]="hello";
+   	rev(s,strlen(s));
+    	printf("hello = %s\n",s);
+    }
+    
+    /* define your function here (don't forget to declare it) */
+
+Expected Output
+---------------
+
+    hello = olleh
+
+Solution
+--------
+
+    #include <stdio.h>
+    #include <string.h>
+
+    void rev(char *str, int length);
+
+    int main() {
+        /* testing code */
+        char s[]="hello";
+   	rev(s,strlen(s));
+    	printf("hello = %s\n",s);
+    }
+
+    void rev(char *str,int length) {
+        if (length <= 1) {
+            return;
+        }
+        else {
+	    char temp = *str;
+   	    *str=str[length-1];
+    	    str[length-1]=temp;
+    	    rev(str+1,length-2);
+        }
+    }
